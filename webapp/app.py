@@ -8,8 +8,8 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/translate', methods=['POST'])
-def translate():
+@app.route('/detect', methods=['POST'])
+def detect():
     auth_key = os.environ.get('DEEPL_KEY')
 
     text = request.form['text-input']
