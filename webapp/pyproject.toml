@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "webapp-example"
+name = "webapp"
 version = "0.1.0"
 description = ""
-authors = ["Nils Riekers"]
+authors = ["Maximilian Nagel"]
 readme = "README.md"
-packages = [{include = "webapp_example"}]
+packages = [{include = "webapp"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
