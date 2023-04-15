@@ -179,3 +179,30 @@ resource "azurerm_virtual_machine" "myweb" {
 output "public_ip_address" {
   value = azurerm_public_ip.external.ip_address
 }
+
+resource "azurerm_mssql_server" "sql_server_languagedetection" {
+  name                         = "languagedetection-sql-server"
+  resource_group_name          = azurerm_resource_group.myweb.name
+  location                     = azurerm_resource_group.myweb.location
+  version                      = "12.0"
+  administrator_login          = "azureuser"
+  administrator_login_password = "af3ieTh7pe!"
+}
+
+resource "azurerm_mssql_database" "sql_database_languagedetection" {
+  name                = "languagedetection-sql-database"
+  server_id    = azurerm_mssql_server.sql_server_languagedetection.id
+  sku_name     = "Basic"
+  collation    = "SQL_Latin1_General_CP1_CI_AS"
+}
+
+resource "local_file" "terraform_output" {
+  content = jsonencode({
+    sql_server_fqdn           = azurerm_mssql_server.sql_server_languagedetection.fully_qualified_domain_name
+    sql_database_name         = azurerm_mssql_database.sql_database_languagedetection.name
+    sql_server_admin_login    = azurerm_mssql_server.sql_server_languagedetection.administrator_login
+    sql_server_admin_password = azurerm_mssql_server.sql_server_languagedetection.administrator_login_password
+  })
+
+  filename = "terraform_output.json"
+}
