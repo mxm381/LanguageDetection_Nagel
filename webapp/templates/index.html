@@ -88,7 +88,7 @@
     <div class="container">
       <div class="input-container">
         <label for="text-input">Text to study:</label>
-       <textarea id="text-input" name="text-input" placeholder="Place your text here"></textarea>
+       <textarea id="text-input" name="text-input" placeholder="Place your text here">{{ request.form['text-input'] if request.form else '' }}</textarea>
       </div>
       <div class="submit-container">
         <input type="submit" value="Detect Language">
