@@ -5,4 +5,3 @@ variable "prefix" {
 variable "region" {
   default = "swedencentral"
 }
-

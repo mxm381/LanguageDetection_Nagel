@@ -11,3 +11,4 @@ A ready-to-go Language Detection App running on the Azure Cloud
  - run 'cd terraform'
  - run 'terraform init'
  - run 'terraform apply'
+ 
