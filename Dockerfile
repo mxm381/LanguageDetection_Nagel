@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM python
 
 WORKDIR /app
 
@@ -25,4 +25,4 @@ RUN poetry install --no-dev
 
 EXPOSE 5000
 
-CMD [ "python", "./webapp/app.py" ]
+ENTRYPOINT [ "python", "./webapp/app.py" ]
